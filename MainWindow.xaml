@@ -1,0 +1,84 @@
+﻿<Window x:Class="NewFigures.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewFigures"
+        mc:Ignorable="d"
+        Title="Фигуры" Height="545" Width="868" WindowStartupLocation="CenterScreen">
+    <DockPanel >
+        <StackPanel Orientation="Vertical" Background="#FF8888D4" DockPanel.Dock="Right">
+            <StackPanel Orientation="Horizontal" Margin="5,5" HorizontalAlignment="Center">
+                <TextBlock Text="X: " FontSize="14"/>
+                <TextBox x:Name="coordX" Text="100" Width="40" FontSize="14" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5,5" HorizontalAlignment="Center">
+                <TextBlock Text="Y: " FontSize="14"/>
+                <TextBox x:Name="coordY" Text="100" Width="40" FontSize="14" />
+            </StackPanel>
+            <Button Content="Координаты" FontSize="14" Margin="5" Click="OnClickCoord" />
+            <UniformGrid Columns="2" Rows="2" Margin="2">
+                <UniformGrid.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Margin" Value="2"/>
+                        <Setter Property="Height" Value="30"/>
+                    </Style>
+                </UniformGrid.Resources>
+                <Button Click="OnClickCircle">
+                    <Ellipse Stroke="Black" Fill="#FFBD9393" Width="20" Height="20" />
+                </Button>
+                <Button Click="OnClickBox">
+                    <Rectangle Width="20" Height="20" Stroke="Black" Fill="#FFBD9393"/>
+                </Button>
+                <Button  Click="OnClickStar" >
+                    <Polygon Width="24" Height="24" Stroke="Black" Fill="#FFBD9393" Stretch="Uniform">
+                        <Polygon.Points>
+                            <Point X="3" Y="50"/>
+                            <Point X="54" Y="50"/>
+                            <Point X="70" Y="2"/>
+                            <Point X="86" Y="50"/>
+                            <Point X="137" Y="50"/>
+                            <Point X="96" Y="79"/>
+                            <Point X="110" Y="122"/>
+                            <Point X="70" Y="96"/>
+                            <Point X="30" Y="122"/>
+                            <Point X="44" Y="79"/>
+                            <Point X="44" Y="79"/>
+                        </Polygon.Points>
+                    </Polygon>
+                </Button>
+                <Button Click="OnClickPicture">
+                    <Image Width="28" Height="24" Source="/Resource/пираты.jpg" />
+                </Button>
+
+            </UniformGrid>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Влево" Width="50" FontSize="14" Margin="5" Click="OnClickLeft"></Button>
+                <Button Content="Вправо"  Width="50" FontSize="14" Margin="5" Click="OnClickRight"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Вверх"  Width="50" FontSize="14" Margin="5" Click="OnClickUp" ></Button>
+                <Button Content="Вниз"   Width="50" FontSize="14" Margin="5" Click="OnClickDown" ></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5,5" HorizontalAlignment="Center">
+                <TextBlock Text="Ширина: " FontSize="14"/>
+                <TextBox x:Name="TextWidth"  Text="40" Width="40" FontSize="14" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5,5" HorizontalAlignment="Center">
+                <TextBlock Text="Высота: " FontSize="14"/>
+                <TextBox x:Name="TextHeigth"  Text="40" Width="40" FontSize="14" />
+            </StackPanel>
+            <Button Content="Размеры" FontSize="14" Margin="5" Click="OnClickSizes"></Button>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="&lt;--"  Width="50" FontSize="14" Margin="5" Click="OnClickBefore"  ></Button>
+                <Button Content="--&gt;"   Width="50" FontSize="14" Margin="5" Click="OnClickNext"  ></Button>
+            </StackPanel>
+        </StackPanel>
+        <Canvas x:Name="canvas" Background="#FFB4CBE8">
+        </Canvas>
+
+
+
+    </DockPanel>
+</Window>
