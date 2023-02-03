@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewFigures.Figures;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -19,34 +20,42 @@ namespace NewFigures
 
     public partial class MainWindow : Window
     {
+        MainClassFigures main;
 
         public MainWindow()
         {
             InitializeComponent();
+            main = new MainClassFigures(canvas);
+            double a = double.Parse(TextWidth.Text);
+            double b = double.Parse(TextHeigth.Text);
         }
 
         private void OnClickCircle(object sender, RoutedEventArgs e)
         {
+            Elements element = new Circle(double.Parse(coordX.Text), double.Parse(coordY.Text));
+            main.AddElementInList(element);
         }
 
 
         private void OnClickBox(object sender, RoutedEventArgs e)
         {
-
+            Elements element = new Box(double.Parse(coordX.Text), double.Parse(coordY.Text));
+            main.AddElementInList(element);
         }
 
 
 
         private void OnClickCoord(object sender, RoutedEventArgs e)
         {
-
+            main.SelectedElement.SetXY(double.Parse(coordX.Text), double.Parse(coordY.Text));
         }
 
 
 
         private void OnClickStar(object sender, RoutedEventArgs e)
         {
-
+            Elements element = new Star(double.Parse(coordX.Text), double.Parse(coordY.Text));
+            main.AddElementInList(element);
         }
 
         private void OnClickPicture(object sender, RoutedEventArgs e)
@@ -55,6 +64,7 @@ namespace NewFigures
 
         private void OnClickLeft(object sender, RoutedEventArgs e)
         {
+            main.SelectedElement.MoveFigure(Elements.Move.left, double.Parse(coordX.Text), double.Parse(coordY.Text));
         }
 
         private void OnClickRight(object sender, RoutedEventArgs e)
@@ -75,15 +85,19 @@ namespace NewFigures
 
         private void OnClickBefore(object sender, RoutedEventArgs e)
         {
-
+            main.SelectElement(Direct.Prev);
         }
 
         private void OnClickNext(object sender, RoutedEventArgs e)
         {
+            main.SelectElement(Direct.Next);
+            
         }
 
         private void OnClickSizes(object sender, RoutedEventArgs e)
         {
+            
+            main.SelectedElement.SetSizes(double.Parse(TextWidth.Text), double.Parse(TextHeigth.Text));
         }
     }
 }
