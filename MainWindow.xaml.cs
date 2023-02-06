@@ -14,10 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace NewFigures
 {
-
     public partial class MainWindow : Window
     {
         MainClassFigures main;
